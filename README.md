@@ -3,9 +3,9 @@
 ## Rules of engagement
 
 * Fork the repository
-* Spend no more than one hour fulfilling tasks below. Feel free to focus on either frontend, backend, or both!
+* Spend no more than one or two hours fulfilling tasks below. Feel free to focus on either frontend, backend, or both!
 * Commit and push your work as-is
-* Email us a link to your repository 
+* Create a pull request to this repo from your fork (instructions [here](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork))
 
 ## Installation
 

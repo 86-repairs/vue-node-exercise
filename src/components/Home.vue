@@ -1,10 +1,13 @@
 <template>
   <div class="equipment-card">
       <EquipmentCard
-          v-for="equipment in activeEquipment"
-          :key="equipment.serial_number"
+          v-for="(equipment, index) in activeEquipment"
+          v-on:del-equipment="removeEquipment"
+          :key="index"
+          :index="index"
           :equipment="equipment"
-          :class="{warn: !equipment.equipment_type, warn: !equipment.manufacturer}"
+          :class="{ warn: !equipment.equipment_type, warn: !equipment.manufacturer }"
+
       />
     </div>
 </template>
@@ -332,7 +335,14 @@ export default {
         },
       ],
     },
-  ]}}
+  ]}
+  },
+  methods: {
+    removeEquipment(index) {
+      this.$delete(this.activeEquipment, index);
+      this.$forceUpdate();
+    }
+  }
 };
 </script>
 

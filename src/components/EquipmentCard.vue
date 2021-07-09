@@ -1,13 +1,14 @@
 <template>
   <v-card elevation="5" outlined>
-    <v-card-title class="justify-center"> {{ manufacturer }} </v-card-title>
-    <v-card-subtitle> {{ equipment_type }} </v-card-subtitle>
+    <v-card-title class="justify-center"> {{ equipment.manufacturer }} </v-card-title>
+    <v-card-subtitle> {{ equipment.equipment_type }} </v-card-subtitle>
+    <v-card-text v-if="!equipment.equipment_photos">NO PHOTOS</v-card-text>
   </v-card>
 </template>
 <script>
 export default {
   name: 'equipment-card',
-  props: ["manufacturer", "equipment_type"]
+  props: ["equipment"]
 }
 </script>
 <style scoped>
@@ -19,5 +20,4 @@ export default {
   .justify-center {
     justify-content: center;
   }
-
 </style>

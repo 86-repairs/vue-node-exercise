@@ -1,12 +1,12 @@
 <template>
   <div class="equipment-card">
-    <EquipmentCard
-        v-for="equipment in equipmentList"
-        :key="equipment.serial_number"
-        :equipment_type="equipment.equipment_type"
-        :manufacturer="equipment.manufacturer"
-    />
-  </div>
+      <EquipmentCard
+          v-for="equipment in activeEquipment"
+          :key="equipment.serial_number"
+          :equipment="equipment"
+          :class="{warn: !equipment.equipment_type, warn: !equipment.manufacturer}"
+      />
+    </div>
 </template>
 
 <script>
@@ -15,6 +15,11 @@ export default {
   name: "Home",
   components: {
     EquipmentCard,
+  },
+  computed: {
+    activeEquipment(){
+      return this.equipmentList.filter(equipment => equipment.active)
+    },
   },
   data() {
     return  {
@@ -340,5 +345,9 @@ export default {
     grid-template-columns: 3fr 1fr;
     grid-template-rows: repeat(3,auto);
     grid-gap: 1rem;
+  }
+
+  .warn {
+    background-color: yellow;
   }
 </style>

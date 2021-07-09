@@ -19,6 +19,16 @@ app.get("/equipment", (req, res) => {
   }, 800);
 });
 
+app.get("/equipment/search", (req, res) => {
+  const manufacturer = req.query.manufacturer?.toLowerCase() ?? "";
+  
+  const filteredEquipment = Equipment.filter(
+    e => e.manufacturer?.toLowerCase().indexOf(manufacturer) > -1
+  );
+
+  res.json(filteredEquipment);
+});
+
 const port = 8100;
 
 app.listen(port, () => {

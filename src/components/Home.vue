@@ -22,9 +22,7 @@ export default {
     EquipmentCard,
   },
   computed: {
-    ...mapState({
-      equipments: (state) => state.equipments
-    }),
+    ...mapState(["equipments"]),
     activeEquipment(){
       return this.equipments.filter(equipment => equipment.active)
     },
@@ -37,6 +35,9 @@ export default {
       this.$delete(this.activeEquipment, index);
       this.$forceUpdate();
     }
+  },
+  created(){
+    this.$store.dispatch('loadEquipments');
   }
 };
 </script>

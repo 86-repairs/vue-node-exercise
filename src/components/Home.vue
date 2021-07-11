@@ -45,12 +45,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .equipment-card {
-    max-width: 800px;
-    margin: 2em auto;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: repeat(3,auto);
-    grid-gap: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin: 5%;
+    width: 100%;
   }
 
   .warn {

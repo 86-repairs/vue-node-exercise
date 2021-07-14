@@ -6,7 +6,7 @@
           :key="index"
           :index="index"
           :equipment="equipment"
-          :class="{ warn: !equipment.equipment_type, warn: !equipment.manufacturer }"
+          :class="{ warn: showWarnClass(equipment) }"
 
       />
     </div>
@@ -25,19 +25,19 @@ export default {
     ...mapState(["equipments"]),
     activeEquipment(){
       return this.equipments.filter(equipment => equipment.active)
-    },
-  },
-  data() {
-    return  {}
+    }
   },
   methods: {
     removeEquipment(index) {
-      this.$delete(this.activeEquipment, index);
-      this.$forceUpdate();
+      this.$delete(this.activeEquipment, index)
+      this.$forceUpdate()
+    },
+    showWarnClass(equipment){
+      return !(equipment.equipment_type && equipment.manufacturer)
     }
   },
   created(){
-    this.$store.dispatch('loadEquipments');
+    this.$store.dispatch('loadEquipments')
   }
 };
 </script>

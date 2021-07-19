@@ -1,11 +1,17 @@
 const cors = require("cors");
 const express = require("express");
 const Equipment = require("./equipmentData");
+const DBClient = require("../db/db-client");
+const bodyParser = require('body-parser')
 
 const app = express();
 
 app.use(cors());
 app.options("*", cors());
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
+DBClient.getPoolConnectionToDB();
 
 app.get("/equipment", (req, res) => {
   setTimeout(() => {
@@ -28,6 +34,12 @@ app.get("/equipment/query", (req, res) => {
   res.json(filteredEquipment);
   res.status(200).end();
 
+});
+
+app.post("/ticket", async (req, res) => {
+
+  await DBClient.executeInsert(`INSERT INTO tickets (problem, equipment_serial) VALUES ('${req.body.problem}', '${req.body.equipmentSerial}')`);
+  res.status(201).end();
 });
 
 const port = 8100;

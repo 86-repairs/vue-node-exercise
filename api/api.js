@@ -44,8 +44,9 @@ app.post("/ticket", async (req, res) => {
     res.status(201).end();
   }
   else{
-    console.log("Sorry, that serial number doesn't exist in our records");
-    res.status(404).json({ error: "Sorry, that serial number doesn't exist in our records" }).end();
+    let errorString = "Sorry, that serial number doesn't exist in our records";
+    console.log(errorString);
+    res.status(404).json({ error: errorString }).end();
   }
 });
 

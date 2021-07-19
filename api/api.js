@@ -19,6 +19,17 @@ app.get("/equipment", (req, res) => {
   }, 800);
 });
 
+app.get("/equipment/query", (req, res) => {
+
+  let manufacturer = req.query.manufacturer;
+
+  let filteredEquipment = Equipment.filter(item => item.manufacturer === manufacturer);
+
+  res.json(filteredEquipment);
+  res.status(200).end();
+
+});
+
 const port = 8100;
 
 app.listen(port, () => {

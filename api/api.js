@@ -38,8 +38,15 @@ app.get("/equipment/query", (req, res) => {
 
 app.post("/ticket", async (req, res) => {
 
-  await DBClient.executeInsert(`INSERT INTO tickets (problem, equipment_serial) VALUES ('${req.body.problem}', '${req.body.equipmentSerial}')`);
-  res.status(201).end();
+  let equipmentSerial = req.body.equipmentSerial;
+  if(Equipment.filter(item => item.serial_number === equipmentSerial).length > 0){
+    await DBClient.executeInsert(`INSERT INTO tickets (problem, equipment_serial) VALUES ('${req.body.problem}', '${req.body.equipmentSerial}')`);
+    res.status(201).end();
+  }
+  else{
+    console.log("Sorry, that serial number doesn't exist in our records");
+    res.status(404).json({ error: "Sorry, that serial number doesn't exist in our records" }).end();
+  }
 });
 
 const port = 8100;

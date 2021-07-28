@@ -26,7 +26,7 @@ app.post("/tickets", (req, res) => {
   const sql = "SELECT SerialNumber FROM Equipment WHERE SerialNumber = ?";
   const serialNumber = req.body.equipmentSerial.trim();
 
-  db.get(sql, id, (err, row) => {
+  db.get(sql, serialNumber, (err, row) => {
     if (err) {
       return res.status(500).json({ error: err });
     }

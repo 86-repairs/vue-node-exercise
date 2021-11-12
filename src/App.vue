@@ -1,18 +1,26 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <Home />
+    <Equipment />
   </div>
 </template>
 
 <script>
-import Home from "./components/Home.vue";
+import Equipment from "./components/Equipment.vue";
+import {mapActions, mapState} from "vuex";
 
 export default {
   name: "App",
   components: {
-    Home,
+    Equipment,
   },
+  computed: mapState(['equipmentData']),
+  methods: {
+    ...mapActions(['getEquipmentData']),
+  },
+  async mounted () {
+    await this.getEquipmentData()
+  }
 };
 </script>
 

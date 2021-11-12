@@ -1,38 +1,25 @@
 <template>
-  <v-container class="billing">
-    <v-row>
-      <v-card
-          class="mx-auto my-12"
-          width="374"
-          v-for="item in equipmentData"
-          :key="item.serial_number"
-      >
-        <v-card-text>
-          <div>Serial Number</div>
-          <p class="text-h4 text--primary">
-            {{ item.serial_number }}
-          </p>
-          <v-row>
-            <v-col>
-              <p>Manufacturer</p>
-              <div class="text--primary">
-                {{ item.manufacturer }}
-              </div>
-            </v-col>
-            <v-col>
-              <p>Equipment Type</p>
-              <div class="text--primary">
-                {{ item.equipment_type }}
-              </div>
-            </v-col>
-          </v-row>
-        </v-card-text>
-      </v-card>
-    </v-row>
-  </v-container>
+  <div class="container">
+    <div
+        v-for="item in equipmentData"
+        :key="item.serial_number"
+    >
+      <div class="card">
+        <span >Serial Number: {{ item.serial_number }}</span>
+        <div>
+          <div>
+            <p>Manufacturer: {{ item.manufacturer }}</p>
+          </div>
+          <div>
+            <p>Equipment Type: {{ item.equipment_type }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import { mapState } from 'vuex'
 
@@ -41,3 +28,19 @@ export default Vue.extend({
   computed: mapState(['equipmentData'])
 })
 </script>
+
+<style>
+.card {
+  border: solid black 1px;
+  border-radius: 10px;
+  width: 350px;
+  height: 125px;
+  padding: 20px;
+  margin: 10px;
+}
+.container {
+  margin: 1em;
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>

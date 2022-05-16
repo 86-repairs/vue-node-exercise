@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
+    <img id="logo" alt="Vue logo" src="./assets/logo.png" />
     <Home />
   </div>
 </template>
@@ -23,6 +23,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 60px 10% 0;
+}
+
+#logo {
+  margin-bottom: 50px;
 }
 </style>

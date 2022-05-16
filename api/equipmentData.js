@@ -58,15 +58,15 @@ module.exports = [
     equipment_type: "Convection Oven",
   },
   // Mismatched data type for equipment_photos field.
-  {
-    active: true,
-    description: "Convection Oven",
-    manufacturer: "Vulcan",
-    model_number: "VC4GD-10",
-    serial_number: "54-10505374",
-    equipment_type: "Convection Oven",
-    equipment_photos: 1337,
-  },
+  // {
+  //   active: true,
+  //   description: "Convection Oven",
+  //   manufacturer: "Vulcan",
+  //   model_number: "VC4GD-10",
+  //   serial_number: "54-10505374",
+  //   equipment_type: "Convection Oven",
+  //   equipment_photos: 1337,
+  // },
   {
     active: true,
     description: "6-Burner Range with Conventional Oven",

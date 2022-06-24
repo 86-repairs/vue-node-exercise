@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h2>Welcome to Vue frontend exercise!</h2>
-    <ul>
+    <!-- <ul>
       <a target="_blank" href="https://www.86repairs.com/"
         >Here's a link to our official company site</a
       >
@@ -25,13 +25,37 @@
       >
         Here are some tips about how to be a better developer</a
       >
+    </ul> -->
+    <div v-if="loading">
+    Loading your equipment ....
+    </div>
+    <div v-if="!loading && !error">
+    <ul  v-for="device in deviceData" :key="device.serial_number">
+    <li><strong>Device:</strong>{{device.description}}</li>
     </ul>
+    </div>
+
+    <div v-else>
+      {{error}}
+    </div>
   </div>
 </template>
 
 <script>
+import {fetchDevices} from '../composables/apiService';
 export default {
-  name: "Home",
+  setup() {
+    const name = "Home";
+    const {deviceData, error, loading} = fetchDevices();
+    // const activeDevices = deviceData !== undefined && deviceData.length > 0 ? deviceData.filter(device=> device.active = true): [];
+    return {
+      name,
+      deviceData,
+      //activeDevices,
+      error,
+      loading
+    }
+  }
 };
 </script>
 
